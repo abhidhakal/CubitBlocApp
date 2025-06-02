@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:myapp/bloc/arithmetic_bloc.dart';
+import 'package:myapp/bloc/arithmetic_event.dart';
 
 class ArithmeticBlocView extends StatelessWidget {
   const ArithmeticBlocView({super.key});
@@ -41,7 +43,7 @@ class ArithmeticBlocView extends StatelessWidget {
                     value == null || value.isEmpty ? "Enter the number" : null,
               ),
               SizedBox(height: 20),
-              BlocBuilder<ArithmeticCubit, int>(
+              BlocBuilder<ArithmeticBloc, int>(
                 builder: (context, state) {
                   return Text('Result: $state', style: TextStyle(fontSize: 20));
                 },
@@ -50,10 +52,9 @@ class ArithmeticBlocView extends StatelessWidget {
               ElevatedButton(
                 onPressed: () {
                   if (_myFormKey.currentState!.validate()) {
-                    context.read<ArithmeticCubit>().add(
-                          int.parse(firstController.text),
-                          int.parse(secondController.text),
-                        );
+                    final firstNumber = int.parse(firstController.text);
+                    final secondNumber = int.parse(secondController.text);
+                    context.read<ArithmeticBloc>().add(IncrementEvent(firstNumber, secondNumber));
                   }
                 },
                 child: Text("Add"),
@@ -61,10 +62,9 @@ class ArithmeticBlocView extends StatelessWidget {
               ElevatedButton(
                 onPressed: () {
                   if (_myFormKey.currentState!.validate()) {
-                    context.read<ArithmeticCubit>().subtract(
-                          int.parse(firstController.text),
-                          int.parse(secondController.text),
-                        );
+                    final firstNumber = int.parse(firstController.text);
+                    final secondNumber = int.parse(secondController.text);
+                    context.read<ArithmeticBloc>().add(DecrementEvent(firstNumber, secondNumber));
                   }
                 },
                 child: Text("Subtract"),
@@ -72,10 +72,9 @@ class ArithmeticBlocView extends StatelessWidget {
               ElevatedButton(
                 onPressed: () {
                   if (_myFormKey.currentState!.validate()) {
-                    context.read<ArithmeticCubit>().multiply(
-                          int.parse(firstController.text),
-                          int.parse(secondController.text),
-                        );
+                    final firstNumber = int.parse(firstController.text);
+                    final secondNumber = int.parse(secondController.text);
+                    context.read<ArithmeticBloc>().add(MultiplyEvent(firstNumber, secondNumber));
                   }
                 },
                 child: Text("Multiply"),

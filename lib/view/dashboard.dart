@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:myapp/cubit/dashboard_cubit.dart';
+import 'package:myapp/view/pages/arithmetic_bloc_view.dart';
 import 'package:myapp/view/pages/palindrome_view.dart';
 import 'package:myapp/view/pages/simple_interest.dart';
 
@@ -10,6 +11,7 @@ class DashboardScreen extends StatelessWidget {
     return BlocBuilder<DashboardCubit, int>(
       builder: (context, selectedIndex) {
         final pages = [
+          ArithmeticBlocView(),
           SimpleInterestScreen(),
           PalindromeScreen(),
         ];

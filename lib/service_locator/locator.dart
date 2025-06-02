@@ -1,4 +1,5 @@
 import 'package:get_it/get_it.dart';
+import 'package:myapp/bloc/arithmetic_bloc.dart';
 import 'package:myapp/cubit/dashboard_cubit.dart';
 import 'package:myapp/cubit/navigation_cubit.dart';
 import 'package:myapp/cubit/splashscreen_cubit.dart';
@@ -16,4 +17,5 @@ void setupLocator() {
   getIt.registerFactory(() => DashboardCubit(getIt<NavigationCubit>()));
   getIt.registerFactory(() => SimpleInterestCubit(getIt<NavigationCubit>()));
   getIt.registerFactory(() => PalindromeCubit(getIt<NavigationCubit>()));
+  getIt.registerFactory(() => ArithmeticBloc(getIt<NavigationCubit>()));
 }
