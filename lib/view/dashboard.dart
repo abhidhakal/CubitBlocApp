@@ -23,6 +23,10 @@ class DashboardScreen extends StatelessWidget {
             onTap: (index) => context.read<DashboardCubit>().selectScreen(index),
             items: const [
               BottomNavigationBarItem(
+                icon: Icon(Icons.add),
+                label: 'Arithmetic',
+              ),
+              BottomNavigationBarItem(
                 icon: Icon(Icons.calculate),
                 label: 'Simple Interest',
               ),
