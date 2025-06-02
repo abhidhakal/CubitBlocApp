@@ -15,7 +15,6 @@ class DashboardScreen extends StatelessWidget {
         ];
 
         return Scaffold(
-          appBar: AppBar(title: Text('Dashboard')),
           body: pages[selectedIndex],
           bottomNavigationBar: BottomNavigationBar(
             currentIndex: selectedIndex,
