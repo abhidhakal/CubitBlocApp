@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:myapp/bloc/arithmetic_bloc.dart';
 import 'package:myapp/cubit/dashboard_cubit.dart';
 import 'package:myapp/cubit/navigation_cubit.dart';
 import 'package:myapp/cubit/palindrome_cubit.dart';
@@ -23,6 +24,7 @@ class App extends StatelessWidget {
         BlocProvider(create: (_) => getIt<DashboardCubit>()),
         BlocProvider(create: (_) => getIt<SimpleInterestCubit>()),
         BlocProvider(create: (_) => getIt<PalindromeCubit>()),
+        BlocProvider(create: (_) => getIt<ArithmeticBloc>()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -35,6 +37,11 @@ class App extends StatelessWidget {
                   child: Splashscreen(),
                 );
               case AppScreen.dashboard:
+                return BlocProvider(
+                  create: (_) => getIt<DashboardCubit>(),
+                  child: DashboardScreen(),
+                );
+              case AppScreen.arithmetic:
                 return BlocProvider(
                   create: (_) => getIt<DashboardCubit>(),
                   child: DashboardScreen(),
