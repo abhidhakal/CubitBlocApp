@@ -18,7 +18,7 @@ class DashboardScreen extends StatelessWidget {
             body = PalindromeScreen();
             break;
           default:
-            body = Center(child: Text('Welcome to Dashboard Home!', style: TextStyle(fontSize: 24)));
+            body = SimpleInterestScreen();
         }
 
         return Scaffold(
@@ -31,10 +31,6 @@ class DashboardScreen extends StatelessWidget {
               BottomNavigationBarItem(
                 icon: Icon(Icons.calculate),
                 label: 'Simple Interest',
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.home),
-                label: 'Home',
               ),
               BottomNavigationBarItem(
                 icon: Icon(Icons.history_edu),

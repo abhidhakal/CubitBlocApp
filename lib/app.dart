@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:myapp/cubit/dashboard_cubit.dart';
 import 'package:myapp/cubit/navigation_cubit.dart';
+import 'package:myapp/cubit/palindrome_cubit.dart';
+import 'package:myapp/cubit/simple_interest_cubit.dart';
 import 'package:myapp/cubit/splashscreen_cubit.dart';
 import 'package:myapp/service_locator/locator.dart';
 import 'package:myapp/view/dashboard.dart';
@@ -19,7 +21,8 @@ class App extends StatelessWidget {
         BlocProvider.value(value: navigationCubit),
         BlocProvider(create: (_) => getIt<SplashCubit>()),
         BlocProvider(create: (_) => getIt<DashboardCubit>()),
-        // add other cubits here as needed
+        BlocProvider(create: (_) => getIt<SimpleInterestCubit>()),
+        BlocProvider(create: (_) => getIt<PalindromeCubit>()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -27,15 +30,30 @@ class App extends StatelessWidget {
           builder: (context, screen) {
             switch (screen) {
               case AppScreen.splash:
-                return Splashscreen();
+                return BlocProvider(
+                  create: (_) => getIt<SplashCubit>(),
+                  child: Splashscreen(),
+                );
               case AppScreen.dashboard:
-                return DashboardScreen();
+                return BlocProvider(
+                  create: (_) => getIt<DashboardCubit>(),
+                  child: DashboardScreen(),
+                );
               case AppScreen.simpleInterest:
-                return SimpleInterestScreen();
+                return BlocProvider(
+                  create: (_) => getIt<SimpleInterestCubit>(),
+                  child: SimpleInterestScreen(),
+                );
               case AppScreen.palindrome:
-                return PalindromeScreen();
+                return BlocProvider(
+                  create: (_) => getIt<PalindromeCubit>(),
+                  child: PalindromeScreen(),
+                );
               default:
-                return Splashscreen();
+                return BlocProvider(
+                  create: (_) => getIt<SplashCubit>(),
+                  child: Splashscreen(),
+                );
             }
           },
         ),
