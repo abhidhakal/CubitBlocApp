@@ -8,6 +8,9 @@ class PalindromeScreen extends StatelessWidget {
     return BlocBuilder<PalindromeCubit, PalindromeState>(
       builder: (context, state) {
         return Scaffold(
+          appBar: AppBar(
+            title: const Text("Palindrome"),
+          ),
           body: Padding(
             padding: const EdgeInsets.all(16),
             child: Column(

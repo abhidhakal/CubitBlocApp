@@ -8,6 +8,9 @@ class SimpleInterestScreen extends StatelessWidget {
     return BlocBuilder<SimpleInterestCubit, SimpleInterestState>(
       builder: (context, state) {
         return Scaffold(
+          appBar: AppBar(
+            title: const Text("Simple Interest"),
+          ),
           body: Padding(
             padding: const EdgeInsets.all(16),
             child: Column(

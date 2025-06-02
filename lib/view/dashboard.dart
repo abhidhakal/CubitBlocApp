@@ -9,21 +9,14 @@ class DashboardScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<DashboardCubit, int>(
       builder: (context, selectedIndex) {
-        Widget body;
-        switch (selectedIndex) {
-          case 0:
-            body = SimpleInterestScreen();
-            break;
-          case 1:
-            body = PalindromeScreen();
-            break;
-          default:
-            body = SimpleInterestScreen();
-        }
+        final pages = [
+          SimpleInterestScreen(),
+          PalindromeScreen(),
+        ];
 
         return Scaffold(
           appBar: AppBar(title: Text('Dashboard')),
-          body: body,
+          body: pages[selectedIndex],
           bottomNavigationBar: BottomNavigationBar(
             currentIndex: selectedIndex,
             onTap: (index) => context.read<DashboardCubit>().selectScreen(index),

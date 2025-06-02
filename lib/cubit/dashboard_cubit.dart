@@ -1,22 +1,8 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'navigation_cubit.dart';
+import 'package:myapp/cubit/navigation_cubit.dart';
 
 class DashboardCubit extends Cubit<int> {
-  final NavigationCubit navigationCubit;
+  DashboardCubit(NavigationCubit navigationCubit) : super(0); // default to first tab
 
-  DashboardCubit(this.navigationCubit) : super(0);
-
-  void selectScreen(int index) {
-    switch (index) {
-      case 0:
-        navigationCubit.goToSimpleInterest();
-        break;
-      case 1:
-        navigationCubit.goToPalindrome();
-        break;
-      default:
-        navigationCubit.goToDashboard();
-        break;
-    }
-  }
+  void selectScreen(int index) => emit(index);
 }
