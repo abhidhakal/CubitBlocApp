@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:myapp/bloc/arithmetic_bloc.dart';
+import 'package:myapp/bloc/student_bloc.dart';
 import 'package:myapp/cubit/dashboard_cubit.dart';
 import 'package:myapp/cubit/navigation_cubit.dart';
 import 'package:myapp/cubit/palindrome_cubit.dart';
@@ -8,8 +9,10 @@ import 'package:myapp/cubit/simple_interest_cubit.dart';
 import 'package:myapp/cubit/splashscreen_cubit.dart';
 import 'package:myapp/service_locator/locator.dart';
 import 'package:myapp/view/dashboard.dart';
+import 'package:myapp/view/pages/arithmetic_bloc_view.dart';
 import 'package:myapp/view/pages/palindrome_view.dart';
 import 'package:myapp/view/pages/simple_interest.dart';
+import 'package:myapp/view/pages/student_bloc_view.dart';
 import 'package:myapp/view/splashscreen.dart';
 
 class App extends StatelessWidget {
@@ -25,6 +28,7 @@ class App extends StatelessWidget {
         BlocProvider(create: (_) => getIt<SimpleInterestCubit>()),
         BlocProvider(create: (_) => getIt<PalindromeCubit>()),
         BlocProvider(create: (_) => getIt<ArithmeticBloc>()),
+        BlocProvider(create: (_) => getIt<StudentBloc>()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -43,8 +47,8 @@ class App extends StatelessWidget {
                 );
               case AppScreen.arithmetic:
                 return BlocProvider(
-                  create: (_) => getIt<DashboardCubit>(),
-                  child: DashboardScreen(),
+                  create: (_) => getIt<ArithmeticBloc>(),
+                  child: ArithmeticBlocView(),
                 );
               case AppScreen.simpleInterest:
                 return BlocProvider(
@@ -55,6 +59,11 @@ class App extends StatelessWidget {
                 return BlocProvider(
                   create: (_) => getIt<PalindromeCubit>(),
                   child: PalindromeScreen(),
+                );
+              case AppScreen.palindrome:
+                return BlocProvider(
+                  create: (_) => getIt<StudentBloc>(),
+                  child: StudentBlocView(),
                 );
               default:
                 return BlocProvider(
